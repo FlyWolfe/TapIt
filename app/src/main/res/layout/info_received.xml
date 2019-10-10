@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
+        android:id="@+id/floatingActionButton_ReturnToReceive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -21,7 +21,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/floatingActionButton3"
+        android:layout_alignBottom="@+id/floatingActionButton_ReturnToReceive"
         android:layout_centerHorizontal="true"
         android:text="Name of Person" />
 
@@ -50,7 +50,7 @@
         android:text="Phone Number" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonAddPerson"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView2"

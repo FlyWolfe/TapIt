@@ -16,6 +16,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SendInfo">
+        </activity>
+        <activity
+            android:name=".InfoReceived">
+        </activity>
+        <activity
+            android:name=".ReceiveInfo">
+        </activity>
+        <activity
+            android:name=".RecentContacts">
+        </activity>
+        <activity
+            android:name=".WaitingToSend">
+        </activity>
+        <activity
+            android:name=".SelectedContact">
+        </activity>
     </application>
 
 </manifest>

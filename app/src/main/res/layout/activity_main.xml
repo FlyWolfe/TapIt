@@ -7,13 +7,13 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Menu" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/buttonNew"
         android:layout_width="65dp"
         android:layout_height="57dp"
         android:layout_alignParentEnd="true"
@@ -27,7 +27,7 @@
         android:focusable="true" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonContacts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -39,7 +39,7 @@
         android:text="Contacts" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
