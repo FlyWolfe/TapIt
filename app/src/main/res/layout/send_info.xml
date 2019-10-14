@@ -27,42 +27,42 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <CheckBox
-                android:id="@+id/checkBox5"
+                android:id="@+id/checkBoxFB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Facebook" />
 
             <CheckBox
-                android:id="@+id/checkBox6"
+                android:id="@+id/checkBoxTW"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Twitter" />
 
             <CheckBox
-                android:id="@+id/checkBox7"
+                android:id="@+id/checkBoxIN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Instagram" />
 
             <CheckBox
-                android:id="@+id/checkBox8"
+                android:id="@+id/checkBoxPH"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Phone" />
 
             <CheckBox
-                android:id="@+id/checkBox9"
+                android:id="@+id/checkBoxEM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Email" />
 
             <CheckBox
-                android:id="@+id/checkBox10"
+                android:id="@+id/checkBoxYT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
