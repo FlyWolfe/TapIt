@@ -115,13 +115,13 @@ public class WaitingToSend extends AppCompatActivity implements NfcAdapter.OnNde
         String text = ("Hello there from another device!\n\n" +
                 "Beam Time: " + System.currentTimeMillis());
 
-        NdefMessage msg = new NdefMessage(createRecords());
+       // NdefMessage msg = new NdefMessage(createRecords());
 
         Log.i("NFC", "Message Created!");
 
-        /*new NdefMessage(
+        NdefMessage msg = new NdefMessage(
                 new NdefRecord[] { NdefRecord.createMime(
-                        "application/com.bluefletch.nfcdemo.mimetype", text.getBytes())
+                        "application/com.example.mjshe.tapit", text.getBytes())
                         /**
                          * The Android Application Record (AAR) is commented out. When a device
                          * receives a push with an AAR in it, the application specified in the AAR
@@ -131,7 +131,7 @@ public class WaitingToSend extends AppCompatActivity implements NfcAdapter.OnNde
                          * uses the tag dispatch system.
                         */
                         //,NdefRecord.createApplicationRecord("com.example.android.beam")
-        //        });
+                });
 
 
         return msg;

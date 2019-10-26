@@ -54,14 +54,45 @@ public class ReceiveInfo extends AppCompatActivity {
             }
         }
     }
+
+    private void processNFCData( Intent inputIntent ) {
+
+        Parcelable[] rawMessages =
+                inputIntent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+
+        if (rawMessages != null && rawMessages.length > 0) {
+
+            NdefMessage[] messages = new NdefMessage[rawMessages.length];
+
+            for (int i = 0; i < rawMessages.length; i++) {
+
+                messages[i] = (NdefMessage) rawMessages[i];
+
+            }
+            Log.i("NFC", "message size = " + messages.length);
+
+            // only one message sent during the Android beam
+            // so you can just grab the first record.
+            NdefMessage msg = (NdefMessage) rawMessages[0];
+
+            // record 0 contains the MIME type, record 1 is the AAR, if present
+            String payloadStringData = new String(msg.getRecords()[0].getPayload());
+
+            // now do something with your payload payloadStringData
+
+        }
+    }
+
     @Override
     protected void onNewIntent(Intent intent) {
-        //handleNfcIntent(intent);
-
-        Log.i("NFC", "NFC INTENT RECEIVED.");
         super.onNewIntent(intent);
 
-        handleNfcIntent(intent);
+        if (intent != null && NfcAdapter.ACTION_NDEF_DISCOVERED.equals( intent.getAction() )) {
+            // We scanned an NFC Tag.
+            processNFCData( intent );
+        }
+
+        //handleNfcIntent(intent);
 
     }
     @Override
@@ -81,6 +112,17 @@ public class ReceiveInfo extends AppCompatActivity {
         });
 
         //handleNfcIntent(getIntent());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Check to see that the Activity started due to an Android Beam
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals( getIntent().getAction() )) {
+            // Yes, Activity start via Beam...  wonder if we should pass a flag indicating Beam?
+            processNFCData( getIntent() );
+        }
     }
 
 }
