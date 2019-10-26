@@ -42,6 +42,9 @@ public class WaitingToSend extends AppCompatActivity implements NfcAdapter.OnNde
         }
         //We'll write the createRecords() method in just a moment
         NdefRecord[] recordsToAttach = createRecords();
+
+
+        Log.i("NFC", "Created Message!");
         //When creating an NdefMessage we need to provide an NdefRecord[]
         return new NdefMessage(recordsToAttach);
     }
@@ -50,6 +53,11 @@ public class WaitingToSend extends AppCompatActivity implements NfcAdapter.OnNde
     public void onNdefPushComplete(NfcEvent event) {
         //This is called when the system detects that our NdefMessage was
         //Successfully sent.
+
+        Log.i("NFC", "Message Sent!");
+        TextView textview = (TextView)findViewById(R.id.textView4);
+
+        textview.setText("SENT MESSAGE");
         messagesToSendArray.clear();
     }
 
@@ -73,6 +81,7 @@ public class WaitingToSend extends AppCompatActivity implements NfcAdapter.OnNde
 
             //This will be called if the message is sent successfully
             nfcAdapter.setOnNdefPushCompleteCallback(this, this);
+            Log.i("NFC", "NFC Adapter is enabled!");
         }
         else
         {
@@ -108,6 +117,8 @@ public class WaitingToSend extends AppCompatActivity implements NfcAdapter.OnNde
 
                 records[i] = record;
             }
+
+            Log.i("NFC", "Records Created, JELLY BEAN!");
         }
 
         else{
@@ -118,6 +129,8 @@ public class WaitingToSend extends AppCompatActivity implements NfcAdapter.OnNde
                 NdefRecord record = NdefRecord.createMime("text/plain",payload);
                 records[i] = record;
             }
+
+            Log.i("NFC", "Records Created, NORMAL!");
         }
         //Remember to change the size of your array when you instantiate it.
         records[messagesToSendArray.size()] =

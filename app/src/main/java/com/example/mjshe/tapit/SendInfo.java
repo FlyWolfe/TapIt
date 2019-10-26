@@ -30,7 +30,7 @@ public class SendInfo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SendInfo.this, WaitingToSend.class);
 
-                String textToWrite = "Tap to Send:\n\n";
+                String textToWrite = "Tap it:\n\n";
                 if (checkboxFB.isChecked()) {
                     textToWrite += "Facebook\n\n";
                 }
