@@ -28,6 +28,8 @@ import java.util.ArrayList;
 
 public class WaitingToSend extends AppCompatActivity implements NfcAdapter.OnNdefPushCompleteCallback, NfcAdapter.CreateNdefMessageCallback{
 
+    private static String TAG = "NFCDEMO:"+MainActivity.class.getSimpleName();
+
     private NfcAdapter nfcAdapter;
 
     private ArrayList<String> messagesToSendArray = new ArrayList<>();
@@ -89,6 +91,9 @@ public class WaitingToSend extends AppCompatActivity implements NfcAdapter.OnNde
             finish();
         }
 
+        // Register callback
+        nfcAdapter.setNdefPushMessageCallback(_onNfcCreateCallback, this);
+
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +101,33 @@ public class WaitingToSend extends AppCompatActivity implements NfcAdapter.OnNde
             }
         });
 
+    }
+
+    private NfcAdapter.CreateNdefMessageCallback _onNfcCreateCallback = new NfcAdapter.CreateNdefMessageCallback() {
+        @Override
+        public NdefMessage createNdefMessage(NfcEvent inputNfcEvent) {
+            Log.i(TAG, "createNdefMessage");
+            return createMessage();
+        }
+    };
+
+    private NdefMessage createMessage() {
+        String text = ("Hello there from another device!\n\n" +
+                "Beam Time: " + System.currentTimeMillis());
+        NdefMessage msg = new NdefMessage(
+                new NdefRecord[] { NdefRecord.createMime(
+                        "application/com.bluefletch.nfcdemo.mimetype", text.getBytes())
+                        /**
+                         * The Android Application Record (AAR) is commented out. When a device
+                         * receives a push with an AAR in it, the application specified in the AAR
+                         * is guaranteed to run. The AAR overrides the tag dispatch system.
+                         * You can add it back in to guarantee that this
+                         * activity starts when receiving a beamed message. For now, this code
+                         * uses the tag dispatch system.
+                        */
+                        //,NdefRecord.createApplicationRecord("com.example.android.beam")
+                });
+        return msg;
     }
 
     public NdefRecord[] createRecords() {
