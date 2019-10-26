@@ -58,11 +58,11 @@ public class ReceiveInfo extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         //handleNfcIntent(intent);
 
+        Log.i("NFC", "NFC INTENT RECEIVED.");
         super.onNewIntent(intent);
 
         handleNfcIntent(intent);
 
-        Log.i("NFC", "NFC INTENT RECEIVED.");
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +80,7 @@ public class ReceiveInfo extends AppCompatActivity {
             }
         });
 
-        handleNfcIntent(getIntent());
+        //handleNfcIntent(getIntent());
     }
+
 }

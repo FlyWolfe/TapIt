@@ -21,7 +21,7 @@
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="text/plain" />
+                <data android:mimeType="application/tap.it.nfc"  />
             </intent-filter>
         </activity>
         <activity
@@ -35,7 +35,7 @@
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="text/plain" />
+                <data android:mimeType="application/tap.it.nfc"  />
             </intent-filter>
         </activity>
         <activity
@@ -46,7 +46,7 @@
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="text/plain" />
+                <data android:mimeType="application/tap.it.nfc"  />
             </intent-filter>
         </activity>
         <activity

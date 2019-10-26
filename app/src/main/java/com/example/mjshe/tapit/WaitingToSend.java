@@ -114,7 +114,12 @@ public class WaitingToSend extends AppCompatActivity implements NfcAdapter.OnNde
     private NdefMessage createMessage() {
         String text = ("Hello there from another device!\n\n" +
                 "Beam Time: " + System.currentTimeMillis());
-        NdefMessage msg = new NdefMessage(
+
+        NdefMessage msg = new NdefMessage(createRecords());
+
+        Log.i("NFC", "Message Created!");
+
+        /*new NdefMessage(
                 new NdefRecord[] { NdefRecord.createMime(
                         "application/com.bluefletch.nfcdemo.mimetype", text.getBytes())
                         /**
@@ -126,17 +131,20 @@ public class WaitingToSend extends AppCompatActivity implements NfcAdapter.OnNde
                          * uses the tag dispatch system.
                         */
                         //,NdefRecord.createApplicationRecord("com.example.android.beam")
-                });
+        //        });
+
+
         return msg;
     }
 
     public NdefRecord[] createRecords() {
-
-        NdefRecord[] records = new NdefRecord[messagesToSendArray.size() + 1];
+        String text = ("Hello there from another device!\n\n" +
+                "Beam Time: " + System.currentTimeMillis());
+        NdefRecord[] records = new NdefRecord[messagesToSendArray.size() + 2];
         //To Create Messages Manually if API is less than
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
         {
-            for (int i = 0; i < messagesToSendArray.size(); i++) {
+            for (int i = 0; i < messagesToSendArray.size() - 1; i++) {
 
                 byte[] payload = messagesToSendArray.get(i).
                         getBytes(Charset.forName("UTF-8"));
@@ -147,9 +155,12 @@ public class WaitingToSend extends AppCompatActivity implements NfcAdapter.OnNde
                         new byte[0],                //The optional id for our Record
                         payload);                   //Our payload for the Record
 
-                records[i] = record;
+
+                records[i] = NdefRecord.createMime("text/plain", text.getBytes());
+                //records[i] = record;
             }
 
+            records[records.length - 1] = NdefRecord.createApplicationRecord("com.example.android.beam");
             Log.i("NFC", "Records Created, JELLY BEAN!");
         }
 
