@@ -19,6 +19,7 @@ import android.nfc.NfcEvent;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -79,7 +80,9 @@ public class ReceiveInfo extends AppCompatActivity {
             String payloadStringData = new String(msg.getRecords()[0].getPayload());
 
             // now do something with your payload payloadStringData
+            TextView textview = (TextView)findViewById(R.id.textView);
 
+            textview.setText(payloadStringData);
         }
     }
 
